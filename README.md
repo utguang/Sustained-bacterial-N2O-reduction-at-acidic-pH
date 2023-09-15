@@ -10,7 +10,6 @@ nf-core/ampliseq pipeline was used: (https://nf-co.re/ampliseq/2.6.1)
 Parallel-Meta was used: (http://bioinfo.single-cell.cn/parallel-meta.html)
 # The Enveomics Tool is available under:
 
-
-
+https://github.com/lmrodriguezr/enveomics
 
 This repository contains the codes used for bioinformatic analysis and viasualization in my manuscript titled: Sustained N2O reduction at acidic pH. Please feel free to reach if bugs occured on these codes.
