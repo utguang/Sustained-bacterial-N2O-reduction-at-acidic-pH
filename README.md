@@ -3,6 +3,7 @@
 This github repository contains codes needed to reproduce the figures in my manuscript "Sustained bacterial N2O reduction at acidic pH"
 #
 For figure S3, codes are available in https://github.com/utguang/RecruitPlotEasy
+A more easy-to-use script is available upon request to me.
 # For genome construction from metagenomes derived from consortium culture and axenic culture.
 nf-core/MAG pipeline was used:  (https://nf-co.re/mag) 
 # For amplicon sequencing data analyses.
