@@ -13,3 +13,5 @@ Parallel-Meta was used: (http://bioinfo.single-cell.cn/parallel-meta.html)
 https://github.com/lmrodriguezr/enveomics
 
 This repository contains the codes used for bioinformatic analysis and viasualization in my manuscript titled: Sustained N2O reduction at acidic pH. Please feel free to reach if bugs occured on these codes.
+
+# For additional questions please reach to ghe3@vols.utk.edu. For the co-culture request request reach to either Dr. Guang He or Professor Frank Löffler at University of Tennessee.
