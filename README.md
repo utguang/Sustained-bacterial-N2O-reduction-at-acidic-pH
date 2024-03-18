@@ -1,5 +1,5 @@
 # Paper-code
-Codes needed to reproduce the figures in papaer "Sustained N2O reduction at acidic pH"
+Codes needed to reproduce the figures in my manuscript "Sustained bacterial N2O reduction at acidic pH"
 #
 For figure S3, codes are available in https://github.com/utguang/RecruitPlotEasy
 # For genome construction from metagenomes derived from consortium culture and axenic culture.
