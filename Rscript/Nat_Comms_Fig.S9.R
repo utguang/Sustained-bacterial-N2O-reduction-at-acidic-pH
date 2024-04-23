@@ -1,54 +1,35 @@
+library(ggmsa)
+library(Biostrings)
+library(treeio)
+
+#Import nosZ alignment data
+nosZ_align<-read.fasta("FigS9_nosZ.aln.fasta")
+
+# extract the CuA representing consensus motif sequences
+
+
+CuA_2ndH<-seqlogo(nosZ_align, start = 999, end = 1010, color = "Chemistry_AA", font = "DroidSansMono")
 
 
 
-word_mytheme<-theme_bw()+theme(panel.grid.major=element_blank(),panel.grid.minor =element_blank(), 
-                               legend.key.size = unit(10,"pt"),strip.text.x = element_blank(),
-                               panel.border = element_blank(),panel.spacing=unit(0.1,"lines"),
-                               
-                               strip.background = element_blank(),
-                               axis.ticks.length = unit(-0.10,"cm"),
-                               axis.title.x = element_text(hjust=0.5,vjust=-2.0,size=10,family = "Times New Roman"),
-                               axis.title.y = element_text(hjust=0.5,vjust=1.0,size=10,family = "Times New Roman"),
-                               axis.title.y.right = element_text(angle = 90),
-                               axis.text.x.bottom = element_text(vjust=0.5,size = 10,colour="red",family = "Times New Roman"),
-                               axis.text.y  = element_text(hjust=0.5,size = 10,colour="red",family = "Times New Roman"),
-                               legend.text = element_text(size = 10,family = "Times New Roman"),legend.position = "top",
-                               legend.title = element_blank())
 
-Fig.S9A<-ggplot(Fig_S9A,aes(Day,OD))+
-  facet_wrap(~Strain,scales = "free_y",ncol = 1)+  
-  geom_errorbar(mapping=aes(ymin=(OD-error),ymax=(OD+error),color=Treatment),width=0.2)+
-  geom_point(aes(Day,OD,color=Treatment,shape=Treatment),size=3)+
-  geom_line(aes(Day,OD,color=Treatment),size=0.8)+word_mytheme+
-  scale_fill_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                    values = c("red","red","blue","blue"))+
-  scale_color_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                     values = c("red","red","blue","blue"))+
-  scale_shape_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                     values = c(19,19,19,19))+
-  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf,size=0.5)+
-  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf,size=0.5)+
-  scale_x_continuous(breaks = c(0,3,6,9))+
-  scale_y_continuous(breaks = c(0,0.025,0.05),limits = c(0,0.06))+
-  theme(legend.position = "none")
+graph2ppt(x=  CuA_2ndH,file="Figure",margins=c(0,0,0,0),upscale=T,
+          append=T,width=14,height=10) #export to PPT
 
-Fig.S9B<-ggplot(Fig_S9B,aes(Day,OD))+
-  facet_wrap(~Strain,scales = "free_y",ncol = 1)+  
-  geom_errorbar(mapping=aes(ymin=(OD-error),ymax=(OD+error),color=Treatment),width=0.2)+
-  geom_point(aes(Day,OD,color=Treatment,shape=Treatment),size=3)+
-  geom_line(aes(Day,OD,color=Treatment),size=0.8)+word_mytheme+
-  scale_fill_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                    values = c("red","red","blue","blue"))+
-  scale_color_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                     values = c("red","red","blue","blue"))+
-  scale_shape_manual(breaks = c("Sulfate","Sulfate_1","N2O","N2O_1"),
-                     values = c(19,19,19,19))+
-  annotate("segment", x=-Inf, xend=Inf, y=-Inf, yend=-Inf,size=0.5)+
-  annotate("segment", x=-Inf, xend=-Inf, y=-Inf, yend=Inf,size=0.5)+
-  scale_x_continuous(breaks = c(0,3,6,9))+
-  scale_y_continuous(breaks = c(0,0.03,0.06,0.09,0.12,0.15),limits = c(0,0.15))+
-  theme(legend.position = "none")
 
-library(patchwork)
-Fig.S9<-(Fig.S9A|Fig.S9B)/plot_spacer()
+#CuZ conserved histidine: the CuZ site comprises seven discrete, but conserved histidine residues. The position information of these histidine residues was inferred from structural modelling analysis
+
+CuZ_1H<-seqlogo(nosZ_align, start = 365, end = 370, color = "Chemistry_AA", font = "DroidSansMono")
+CuZ_3H<-seqlogo(nosZ_align, start = 411, end = 417, color = "Chemistry_AA", font = "DroidSansMono")
+CuZ_4H<-seqlogo(nosZ_align, start = 648, end = 653, color = "Chemistry_AA", font = "DroidSansMono")
+CuZ_5H<-seqlogo(nosZ_align, start = 717, end = 720, color = "Chemistry_AA", font = "DroidSansMono")
+CuZ_6H<-seqlogo(nosZ_align, start = 775, end = 778, color = "Chemistry_AA", font = "DroidSansMono")
+CuZ_7H<-seqlogo(nosZ_align, start = 843, end = 848, color = "Chemistry_AA", font = "DroidSansMono")
+
+Fig.S9<-(CuA_firstH|CuA_2ndH)/((CuZ_1H|CuZ_3H|CuZ_4H)/(CuZ_5H|CuZ_6H|CuZ_7H))
+
+graph2ppt(x=  Fig.S9,file="Figure",margins=c(0,0,0,0),upscale=T,
+          append=T,width=14,height=10)
+
+
 
